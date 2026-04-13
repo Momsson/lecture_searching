@@ -3,10 +3,7 @@ import random
 import time
 import matplotlib.pyplot as plt
 
-
-# =========================
 # READ DATA
-# =========================
 def read_data(filename, field):
     try:
         with open(filename, "r", encoding="utf-8") as f:
@@ -17,9 +14,7 @@ def read_data(filename, field):
     return data.get(field, None)
 
 
-# =========================
 # LINEAR SEARCH
-# =========================
 def linear_search(sequence, target):
     positions = [] #1
 
@@ -34,9 +29,7 @@ def linear_search(sequence, target):
 # Narocnost 3n + 2 nejhorsi
 # Narocnost 2n + 2 nejlepsi
 
-# =========================
 # BINARY SEARCH
-# =========================
 def binary_search(sequence, target):
     left = 0 #1
     right = len(sequence) - 1 #1
@@ -55,9 +48,8 @@ def binary_search(sequence, target):
 # 7n + 2 nejhorsi (neexistujuca)
 # 6 nejlepsi
 
-# =========================
 # PATTERN SEARCH (DNA)
-# =========================
+
 def pattern_search(sequence, pattern):
     positions = set()
     n = len(sequence)
@@ -69,17 +61,13 @@ def pattern_search(sequence, pattern):
 
     return positions
 
-
-# =========================
 # GENERATOR DAT
-# =========================
+
 def generate_sequence(size):
     return [random.randint(0, size) for _ in range(size)]
 
 
-# =========================
 # MERENI CASU
-# =========================
 def measure_time(func, data, target, repeat=5):
     times = []
 
@@ -91,10 +79,7 @@ def measure_time(func, data, target, repeat=5):
 
     return sum(times) / len(times)
 
-
-# =========================
 # MAIN
-# =========================
 def main():
     print("=" * 50)
     print("NAČÍTÁNÍ DAT")
@@ -109,14 +94,14 @@ def main():
     target = 0
     print("\nHledané číslo:", target)
 
-    print("\n" + "=" * 50)
+    print("\n" + "_" * 50)
     print("LINEÁRNÍ VYHLEDÁVÁNÍ")
     print("=" * 50)
 
     result = linear_search(data, target)
     print(result)
 
-    print("\n" + "=" * 50)
+    print("\n" + "_" * 50)
     print("BINÁRNÍ VYHLEDÁVÁNÍ")
     print("=" * 50)
 
@@ -129,7 +114,7 @@ def main():
 
     print("Index:", index)
 
-    print("\n" + "=" * 50)
+    print("\n" + "_" * 50)
     print("PATTERN SEARCH (DNA)")
     print("=" * 50)
 
@@ -142,10 +127,10 @@ def main():
     else:
         print("DNA sekvence nenalezena")
 
-    # =========================
+
     # POROVNÁNÍ ALGORITMŮ
-    # =========================
-    print("\n" + "=" * 50)
+
+    print("\n" + "_" * 50)
     print("POROVNÁNÍ RYCHLOSTI")
     print("=" * 50)
 
@@ -169,11 +154,9 @@ def main():
         t3 = measure_time(lambda d, x: x in d, s, target)
         set_times.append(t3)
 
-        print(f"{size}: linear={t1:.6f}, binary={t2:.6f}, set={t3:.6f}")
+        print(f"{size}: linear={t1:.8f}, binary={t2:.8f}, set={t3:.8f}")
 
-    # =========================
     # GRAF
-    # =========================
     plt.figure()
 
     plt.plot(sizes, linear_times, label="Linear search")
