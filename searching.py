@@ -51,13 +51,13 @@ def binary_search(sequence, target):
 # PATTERN SEARCH (DNA)
 
 def pattern_search(sequence, pattern):
-    positions = set()
+    positions = []
     n = len(sequence)
     m = len(pattern)
 
     for i in range(n - m + 1):
         if sequence[i:i+m] == pattern:
-            positions.add(i)
+            positions.append(i)
 
     return positions
 
