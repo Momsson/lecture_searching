@@ -31,27 +31,29 @@ def linear_search(sequence, target):
         "positions": positions,
         "count": len(positions)
     } #1
-# Narocnost 3n + 2
+# Narocnost 3n + 2 nejhorsi
+# Narocnost 2n + 2 nejlepsi
 
 # =========================
 # BINARY SEARCH
 # =========================
 def binary_search(sequence, target):
-    left = 0
-    right = len(sequence) - 1
+    left = 0 #1
+    right = len(sequence) - 1 #1
 
-    while left <= right:
-        mid = (left + right) // 2
+    while left <= right: #n alebo 1
+        mid = (left + right) // 2 #1
 
-        if sequence[mid] == target:
-            return mid
-        elif sequence[mid] < target:
-            left = mid + 1
-        else:
-            right = mid - 1
+        if sequence[mid] == target: #n alebo 1
+            return mid #1
+        elif sequence[mid] < target: #n
+            left = mid + 1 #n
+        else: #n
+            right = mid - 1 #n
 
-    return None
-
+    return None #1
+# 5n + 5 nejhorsi
+# 6 nejlepsi
 
 # =========================
 # PATTERN SEARCH (DNA)
