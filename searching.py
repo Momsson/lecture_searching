@@ -21,17 +21,17 @@ def read_data(filename, field):
 # LINEAR SEARCH
 # =========================
 def linear_search(sequence, target):
-    positions = []
+    positions = [] #1
 
-    for index, value in enumerate(sequence):
-        if value == target:
-            positions.append(index)
+    for index, value in enumerate(sequence): #n
+        if value == target: #n
+            positions.append(index) # nejlepsi(0) vs nejhorsi pripad (n)
 
     return {
         "positions": positions,
         "count": len(positions)
-    }
-
+    } #1
+# Narocnost 3n + 2
 
 # =========================
 # BINARY SEARCH
