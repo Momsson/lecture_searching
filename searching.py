@@ -54,6 +54,21 @@ def binary_search(sequence, target):
 
 
 # =========================
+# PATTERN SEARCH (DNA)
+# =========================
+def pattern_search(sequence, pattern):
+    positions = set()
+    n = len(sequence)
+    m = len(pattern)
+
+    for i in range(n - m + 1):
+        if sequence[i:i+m] == pattern:
+            positions.add(i)
+
+    return positions
+
+
+# =========================
 # GENERATOR DAT
 # =========================
 def generate_sequence(size):
@@ -84,10 +99,13 @@ def main():
     print("=" * 50)
 
     data = read_data("sequential.json", "unordered_numbers")
-    print("Data:", data)
+    dna_sequence = read_data("sequential.json", "dna_sequence")
 
-    target = 5
-    print("Hledane cisslo:", target)
+    print("Číselná data:", data)
+    print("DNA sekvence:", dna_sequence)
+
+    target = 0
+    print("\nHledané číslo:", target)
 
     print("\n" + "=" * 50)
     print("LINEÁRNÍ VYHLEDÁVÁNÍ")
@@ -107,8 +125,20 @@ def main():
     sorted_data = sorted(data)
     index = binary_search(sorted_data, target)
 
-    print("Seřazená data:", sorted_data)
     print("Index:", index)
+
+    print("\n" + "=" * 50)
+    print("PATTERN SEARCH (DNA)")
+    print("=" * 50)
+
+    pattern = "ATA"
+    print("Hledaný vzor:", pattern)
+
+    if dna_sequence is not None:
+        positions = pattern_search(dna_sequence, pattern)
+        print("Pozice výskytu:", positions)
+    else:
+        print("DNA sekvence nenalezena")
 
     # =========================
     # POROVNÁNÍ ALGORITMŮ
@@ -126,21 +156,18 @@ def main():
     for size in sizes:
         seq = generate_sequence(size)
 
-        # linear
         t1 = measure_time(linear_search, seq, target)
         linear_times.append(t1)
 
-        # binary (musí být seřazený)
         sorted_seq = sorted(seq)
         t2 = measure_time(binary_search, sorted_seq, target)
         binary_times.append(t2)
 
-        # set
         s = set(seq)
         t3 = measure_time(lambda d, x: x in d, s, target)
         set_times.append(t3)
 
-        print(f"Velikost {size}: linear={t1:.6f}, binary={t2:.6f}, set={t3:.6f}")
+        print(f"{size}: linear={t1:.6f}, binary={t2:.6f}, set={t3:.6f}")
 
     # =========================
     # GRAF
@@ -153,7 +180,7 @@ def main():
 
     plt.xlabel("Velikost vstupu (n)")
     plt.ylabel("Čas (s)")
-    plt.title("Porovnání vyhledávacích algoritmů")
+    plt.title("Porovnání algoritmů vyhledávání")
 
     plt.legend()
     plt.grid()
