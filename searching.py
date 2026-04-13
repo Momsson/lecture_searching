@@ -42,7 +42,7 @@ def binary_search(sequence, target):
     right = len(sequence) - 1 #1
 
     while left <= right: #n alebo 1
-        mid = (left + right) // 2 #1
+        mid = (left + right) // 2 #n alebo 1
 
         if sequence[mid] == target: #n alebo 1
             return mid #1
@@ -52,7 +52,7 @@ def binary_search(sequence, target):
             right = mid - 1 #n
 
     return None #1
-# 5n + 5 nejhorsi
+# 7n + 2 nejhorsi (neexistujuca)
 # 6 nejlepsi
 
 # =========================
