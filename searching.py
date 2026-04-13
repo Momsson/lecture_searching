@@ -134,7 +134,7 @@ def main():
     print("POROVNÁNÍ RYCHLOSTI")
     print("=" * 50)
 
-    sizes = [100, 500, 1000, 5000, 10000]
+    sizes = [100, 500, 1000, 5000, 100000000]
 
     linear_times = []
     binary_times = []
