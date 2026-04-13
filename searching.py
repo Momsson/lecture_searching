@@ -165,7 +165,7 @@ def main():
 
     plt.xlabel("Velikost vstupu (n)")
     plt.ylabel("Čas (s)")
-    plt.title("Porovnání algoritmů vyhledávání")
+    plt.title("Porovnání ")
 
     plt.legend()
     plt.grid()
